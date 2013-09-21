@@ -1,0 +1,34 @@
+The following codes can be put into click actions or key actions.
+
+  Go to url: WebBrowser1.Navigate(TextBox1.Text)
+  Back: WebBrowser1.GoBack()
+  Forward: WebBrowser1.GoForward()
+  Refresh: WebBrowser1.Refresh()
+  
+  To create an enter form to launch url's in a textbox/richtextbox.
+  
+  1) Create a keydown press event for the text box
+  
+  2) Put in the following code:
+      If e.KeyCode = Keys.Enter Then
+            WebBrowser1.Navigate(TextBox1.Text)
+        End If
+  
+  To create a progress bar for you're browser.
+  
+  1) Write down the following code into your main form.
+  
+         Private Sub WebBrowser1_ProgressChanged(ByVal sender As System.Object, ByVal e As System.Windows.Forms.WebBrowserProgressChangedEventArgs) Handles WebBrowser1.ProgressChanged
+        Try
+            ProgressBar1.Value = e.CurrentProgress
+            ProgressBar1.Maximum = e.MaximumProgress
+        Catch ex As Exception
+
+        End Try
+    End Sub
+    
+    To avoid script errors use this code:
+        
+          WebBrowser1.ScriptErrorsSuppressed = True
+          
+    Thanks,
